@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OrçaMe — Controle Financeiro</title>
+  <link rel="manifest" href="/manifest.json" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>OrçaMe</h1>
+    <p>Controle simples de entradas e saídas — PWA</p>
+  </header>
+
+  <main>
+    <section class="form">
+      <input id="description" placeholder="Descrição" />
+      <input id="amount" placeholder="Valor (use - para saída)" type="number" />
+      <button id="addBtn">Adicionar</button>
+    </section>
+
+    <section class="balance">
+      <h2>Saldo: <span id="balance">R$ 0,00</span></h2>
+    </section>
+
+    <section class="list">
+      <ul id="transactions"></ul>
+    </section>
+
+    <section class="controls">
+      <button id="exportBtn">Exportar CSV</button>
+      <button id="clearBtn">Limpar tudo</button>
+    </section>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/service-worker.js').catch(console.error);
+    }
+  </script>
+</body>
+</html>
